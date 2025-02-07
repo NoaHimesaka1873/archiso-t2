@@ -29,7 +29,7 @@ jobs:
     
     - name: Upload Built ISO
       if: ${{ github.ref == 'refs/heads/senpai' && !contains(github.event.head_commit.message, '[no rel]') && !contains(github.event.head_commit.message, '[no build]') }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: built-iso
         path: ${{ github.workspace }}/out/archlinux-t2-*.iso
@@ -47,13 +47,16 @@ jobs:
          files: |
            ${{ github.workspace }}/out/archlinux-t2-*.iso
          tag_name: ${{ steps.create_tag.outputs.tag }}
-         name: archlinux-t2-${{ steps.create_tag.outputs.tag }} - Release Adashima 6.9
+         name: archlinux-t2-${{ steps.create_tag.outputs.tag }} - Release Watanare
          draft: ${{ contains(github.event.head_commit.message, '[draft]') }}
          prerelease: ${{ contains(github.event.head_commit.message, '[prerel]') }}
          body: |
-           This release features Sakura Adachi from Adachi and Shimamura!
+           This release features Renako Amaori from There's No Freaking Way I'll Be Your Lover! Unless..., celebrating announcement of anime adaptation!
            Every major release will feature new anime/manga and minor releases will have different characters! 
            Note that Arch ISO release follows kernel release name.
            Follow [this guide](https://wiki.t2linux.org/distributions/arch/installation/) using this ISO to install Arch on your T2 Mac 
       env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+
