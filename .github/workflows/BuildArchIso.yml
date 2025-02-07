@@ -18,7 +18,7 @@ jobs:
         pacman-key --populate
         pacman -Syu --noconfirm --needed reflector curl
         reflector --country $(curl ipv4.myip.wtf/text/country) --sort rate -n 5 --save /etc/pacman.d/mirrorlist
-        pacman -S --noconfirm --needed sudo git base-devel
+        pacman -S --noconfirm --needed sudo git base-devel grub efibootmgr
         printf 'builduser ALL=(ALL) ALL\\n' | tee -a /etc/sudoers
         chown -R builduser:builduser ./
         sudo -u builduser bash -c './prepare.sh'
